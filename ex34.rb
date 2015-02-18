@@ -1,0 +1,6 @@
+sports = [ "rincon", "mavs", "cowells", 1, "8"]
+puts sports[0]
+puts sports[1]
+puts sports[2]
+puts sports[3]
+puts sports[4]
