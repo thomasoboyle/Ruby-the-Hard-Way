@@ -27,7 +27,7 @@ open(WORD_URL) {|f|
 def craft_names(rand_words, snippet, pattern, caps=false)
 	names = snippet.scan(pattern).map do
 		word = rand_words.pop()
-		caps ? workd.capitalize : word
+		caps ? word.capitalize : word
 	end
 
 	return names * 2
@@ -56,7 +56,7 @@ def convert(snippet, phrase)
 		result = sentence.gsub(/###/) {|x| class_names.pop }
 
 		#fake other names
-		result.gsub!(/\*\*\*/) {|x| class_names.pop }
+		result.gsub!(/\*\*\*/) {|x| other_names.pop }
 
 		#fake parameter lists
 		result.gsub!(/@@@/) {|x| param_names.pop }
@@ -72,11 +72,11 @@ loop do
 	snippets = PHRASES.keys().sort_by {rand}
 
 	for snippet in snippets
-		phrase = PHARSES[snippet]
+		phrase = PHRASES[snippet]
 		question, answer = convert(snippet, phrase)
 
 		if PHRASE_FIRST
-			question, answer = anwswer, question
+			question, answer = answer, question
 		end
 
 		print question, "\n\n> "
